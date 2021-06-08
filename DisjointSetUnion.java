@@ -18,7 +18,11 @@ class DisjointSetUnion
     }
     public int get(int u)
     {
-        return (u == dsu[u] ? u : dsu[u] = get(dsu[u]));
+        if (dsu[u] != u)
+        {
+            dsu[u] = get(dsu[u]);
+        }
+        return dsu[u];
     }
     public boolean merge(int u, int v)
     {

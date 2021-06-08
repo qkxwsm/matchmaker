@@ -87,10 +87,10 @@ public class Matching
         Pair<Long, Long> f = M.getFlow();
         System.out.println("Flow " + f.getFirst() + " cost " + f.getSecond());
         System.out.println("L = " + L);
-        // if (f.getFirst() != L)
-        // {
-        //     throw new Exception("No Matching Exists");
-        // }
+        if (f.getFirst() != L)
+        {
+            throw new Exception("No Matching Exists");
+        }
         ArrayList<Pair<Pair<Integer, Integer>, Long> > edges = M.getEdges();
         for (Pair<Pair<Integer, Integer>, Long> e : edges)
         {
