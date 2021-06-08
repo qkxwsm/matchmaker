@@ -40,21 +40,31 @@ public class Matching
     {
         M.addEdge(b + L, T, c, 0);
     }
-    // public ArrayList<Pair<Long, Integer> > clean(ArrayList<Pair<Long, Integer> > a)
-    // {
-    //     Collections.sort(a);
-    //     long val = 1;
-    //     for (int i = 0; i < a.size(); i++)
-    //     {
-    //         Pair<Long, Integer> cur = a.get(i);
-    //         if (i != 0 && cur.getFirst() != a.get(i - 1).getFirst())
-    //         {
-    //             val++;
-    //         }
-    //         a.set(i, new Pair<Long, Integer>(val * val, cur.getSecond()));
-    //     }
-    //     return a;
-    // }
+    public ArrayList<Pair<Long, Integer> > clean(ArrayList<Pair<Long, Integer> > a)
+    {
+        Collections.sort(a);
+        long val = 1;
+        boolean[] used = new boolean[R];
+        for (int i = 0; i < a.size(); i++)
+        {
+            Pair<Long, Integer> cur = a.get(i);
+            if (i != 0 && cur.getFirst() != a.get(i - 1).getFirst())
+            {
+                val++;
+            }
+            a.set(i, new Pair<Long, Integer>(val * val, cur.getSecond()));
+            used[cur.getSecond()] = true;
+        }
+        val += 2;
+        for (int i = 0; i < R; i++)
+        {
+            if (!used[i])
+            {
+
+            }
+        }
+        return a;
+    }
     public int[] calculate() throws Exception
     {
         /*
@@ -68,10 +78,10 @@ public class Matching
         //         edges[i].add(new Pair<Integer, Integer>(E, LLINF));
         //     }
         // }
-        // for (int i = 0; i < L; i++)
-        // {
-        //     edges[i] = clean(edges[i]);
-        // }
+        for (int i = 0; i < L; i++)
+        {
+            edges[i] = clean(edges[i]);
+        }
         for (int i = 0; i < L; i++)
         {
             M.addEdge(S, i, 1, 0);
